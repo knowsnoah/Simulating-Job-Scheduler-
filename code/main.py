@@ -1,5 +1,5 @@
 #cs4310 project - Noah Ojedaa
-#four job scheduling algorithms: FCFS, SJF, RR-2, and PR-5
+#four job scheduling algorithms: FCFS, SJF, RR-2, and RR-5
 
 #imports to get algorithm from their respective files
 import random
