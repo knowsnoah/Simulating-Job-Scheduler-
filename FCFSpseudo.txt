@@ -1,0 +1,30 @@
+#First Come First Serve Scheduling Algorithm
+
+FirstCome(processList):
+    create queue readyQueue
+    currentTime = 0
+    completed = 0
+    n = number of processes
+
+    sort processList by ArrivalTime (AT)
+    i = 0  //index for arriving processes
+
+    while completed < n:
+        while i < n AND processList[i].arrivalTime <= currentTime:
+            enqueue(readyQueue, processList[i])
+            i = i + 1
+        if readyQueue is not empty:
+            P = dequeue(readyQueue)
+            P.startTime = currentTime
+            P.completionTime = currentTime + P.burstTime
+
+            P.turnaroundTime = P.completionTime - P.arrivalTime
+            P.waitingTime = P.turnaroundTime - P.burstTime
+
+            currentTime = P.completionTime
+            completed = completed + 1
+
+        else:
+            currentTime = currentTime + 1 //CPU idle
+
+ 

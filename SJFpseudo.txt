@@ -1,0 +1,34 @@
+#Shorest Job First Algorithm (SFJ)
+
+shortestFirst(processList):
+    currentTime = 0
+    completed = 0
+    n = number of processes
+
+    for each process P:
+        P.remainingTime = P.burstTime
+    
+    while completed < n:
+        //Find processes that have arrived but are not finished
+        readyPrcoesses = all proceses where: arrivalTime <= currentTime AND remainingTime > 0
+
+        if readyPrcoesses is not empty:
+            P = process with the smallest remainingTime //shortest First
+
+            P.remainingTime = P.remainingTime-1
+            currentTime = currentTime + 1
+
+            //If the process is finished 
+            if P.remainingTime == 0:
+                P.completionTime =  currentTime
+                P.turnaroundTime = P.completionTime - P.arrivalTime
+                P.waitingTime = P.turnaroundTime - P.burstTime
+                completed = completed + 1
+
+        else:
+            currentTime = currentTime + 1 //CPU idle
+
+    return processList  //now each has a CT/TAT/WT (and startTime if used)
+
+
+    

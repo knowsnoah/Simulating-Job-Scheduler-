@@ -1,0 +1,54 @@
+#Round Robin with time slice of 2 (RR-2) Pseudocode
+
+roundRobin(processList):
+    timeQuantum = 2
+    currentTime = 0
+    completed = 0
+    n = number of processes
+
+    create empty queue readyQueue
+
+    for each process P:
+        P.remainingTime = P.burstTime
+        P.completionTime = 0
+        P.turnaroundTime = 0
+        P.waitingTime = 0
+
+    while completed < n:
+        #Add newly arrvied processes to readyQueue
+        for each process P:
+            if P.arrivalTime <= currentTime
+                AND P.remainingTime > 0
+                AND P not already in readyQueue:
+                    enqueue P into readyQueue
+            
+        if readyQueue is empty:
+            currentTime = currentTime + 1
+            continue
+
+        #Get next proceses in FIFO orderr
+        P = dequeue from readyQueue
+        runtime = minimum(timeQuantum, P.remainingTime)
+
+        P.remainingTime = P.remainingTime - runtime
+        currentTime = currentTime + runtime
+
+        #add any new arrivals during execution
+        for each process Q:
+            if Q.arrivalTime > (currentTime - runtime)
+                AND Q.arrivalTime <= currentTime
+                AND Q.remainingTime > 0:
+                    enqueue Q into readyQueue
+
+        if P.remainingTime > 0:
+            enqueue P back inot readyQueue
+        else:
+            P.completionTime = currentTime
+            P.turnaroundTime = P.completionTime - P.arrivalTime
+            P.waitingTime = P.turnaroundTime - P.burstTime
+            completed = completed + 1
+
+    return processList 
+
+
+
