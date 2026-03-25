@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 # data from your experimental results
 input_sizes = [5, 10, 15]
 
-fcfs_avg = [2.27, 3.25, 2.81]
-sjf_avg = [1.94, 2.55, 2.45]
-rr2_avg = [3.12, 4.37, 4.02]
-rr5_avg = [2.88, 4.27, 3.65]
+fcfs_avg = [33.72, 58.63, 85.55]
+sjf_avg = [26.99, 44.44, 59.44]
+rr2_avg = [41.35, 75.08, 105.09]
+rr5_avg = [40.71, 73.66, 104.75]
 
 # FCFS graph
 plt.figure()

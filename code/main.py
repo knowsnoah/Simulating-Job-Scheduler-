@@ -66,10 +66,10 @@ def run_experiment():
             rr2_results = rr2(copy.deepcopy(jobs))
             rr5_results = rr5(copy.deepcopy(jobs))
 
-            fcfs_total = average_turnaround(fcfs_results)
-            sjf_total = average_turnaround(sjf_results)
-            rr2_total = average_turnaround(rr2_results)
-            rr5_total = average_turnaround(rr5_results)
+            fcfs_total += average_turnaround(fcfs_results)
+            sjf_total += average_turnaround(sjf_results)
+            rr2_total += average_turnaround(rr2_results)
+            rr5_total += average_turnaround(rr5_results)
 
         #computing the average of the averages after 20 trials
         fcfs_avg = fcfs_total / trial
